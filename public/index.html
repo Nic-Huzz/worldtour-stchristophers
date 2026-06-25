@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe Rise x St Christopher's | European Tour 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface-2: #1a1a1a;
+      --border: #222;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --accent: #c850f0;
+      --accent-2: #ff6b9d;
+      --gradient: linear-gradient(135deg, #c850f0, #ff6b9d);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    /* Sections */
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px;
+      position: relative;
+    }
+
+    .inner {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    /* Typography */
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    p, li {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .gradient-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 40px;
+      align-items: center;
+      text-align: left;
+    }
+
+    .hero h1 {
+      margin-bottom: 24px;
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      max-width: 600px;
+      margin: 0 0 40px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero p { margin: 0 auto 40px; }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    .hero-video {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 9/16;
+    }
+
+    .hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Collage */
+    .collage {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .collage-item {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .collage-item img,
+    .collage-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .collage-item.tall {
+      grid-row: span 2;
+    }
+
+    .collage-item.wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 640px) {
+      .collage {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 200px 200px;
+      }
+      .collage-item.tall { grid-row: span 2; }
+      .collage-item.wide { grid-column: span 1; }
+    }
+
+    /* Duo Section */
+    .duo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .duo-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .duo-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 16px;
+      border: 2px solid var(--border);
+    }
+
+    .duo-card h3 {
+      margin-bottom: 4px;
+    }
+
+    .duo-card .handle {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .duo-card p {
+      font-size: 0.95rem;
+    }
+
+    /* Metrics Section */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .metric-card .handle {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .metric-number {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .metric-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    .metric-row span:first-child {
+      color: var(--text-muted);
+    }
+
+    .metric-row span:last-child {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .growth {
+      color: #4ade80 !important;
+    }
+
+    .combined-bar {
+      margin-top: 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .combined-bar .metric-number {
+      font-size: clamp(3rem, 6vw, 4rem);
+    }
+
+    .combined-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .combined-stat {
+      text-align: center;
+    }
+
+    .combined-stat .num {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .combined-stat .lbl {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Video Section */
+    .video-section {
+      background: var(--bg);
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .video-grid-item {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 9/16;
+    }
+
+    .video-grid-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 640px) {
+      .video-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Route Section */
+    .route-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .route-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 16px;
+      text-align: center;
+    }
+
+    .route-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--accent);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .route-city {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .route-landmark {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      .route-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Content alternating rows */
+    .content-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .content-row.reverse {
+      direction: rtl;
+    }
+
+    .content-row.reverse > * {
+      direction: ltr;
+    }
+
+    .content-media {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 9/16;
+      max-height: 400px;
+    }
+
+    .content-media.landscape {
+      aspect-ratio: 16/9;
+      max-height: none;
+    }
+
+    .content-media video,
+    .content-media img,
+    .content-media iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .content-info .num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+    }
+
+    .content-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .content-info p {
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 640px) {
+      .content-row, .content-row.reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+      }
+    }
+
+    /* Content deliverables */
+    .deliverables {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .deliverable {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .deliverable .num {
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .deliverable .desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Value props */
+    .value-list {
+      list-style: none;
+      margin-top: 32px;
+    }
+
+    .value-list li {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .value-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.2rem;
+    }
+
+    .value-text h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .value-text p {
+      font-size: 0.9rem;
+    }
+
+    /* The Ask */
+    .short-section {
+      min-height: auto;
+    }
+
+    .ask-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .ask-box h2 {
+      margin-bottom: 12px;
+    }
+
+    .ask-box p {
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Contact */
+    .contact-section {
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      margin-bottom: 32px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 1.05rem;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-links .muted {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .jade-note {
+      margin-top: 40px;
+      padding: 20px 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: inline-block;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Production team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .team-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .team-card .role {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .team-card h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .team-card p {
+      font-size: 0.85rem;
+    }
+
+    /* Scroll animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      section { padding: 60px 20px; }
+      .duo-grid, .metrics-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .combined-stats { gap: 24px; }
+      .ask-box { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="inner fade-up">
+      <div class="hero-layout">
+        <div>
+          <div class="hero-badge"><span class="dot"></span> July - August 2026</div>
+          <h1><span class="gradient-text">Vibe Rise</span><br>x St Christopher's</h1>
+          <p>We're bringing the Vibe Rise Movement to Europe.<br><strong style="color: var(--text);">100+ people dancing at 6 of Europe's most iconic monuments.</strong></p>
+        </div>
+        <div class="hero-video" style="position: relative;">
+          <video src="./vibe-we-create.mp4" playsinline autoplay muted loop></video>
+          <div style="position: absolute; bottom: 12px; left: 0; right: 0; text-align: center; font-size: 0.7rem; color: rgba(255,255,255,0.6); pointer-events: none;">Click for music</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section>
+    <div class="inner fade-up">
+      <span class="label">Who We Are</span>
+      <h2>Experience creators.<br>Adventure-driven.</h2>
+      <p style="margin-top: 12px; max-width: 650px;">Nic runs Bali's largest sober headset events. Spiff has spent 8 years travelling the world and building a community of adventure lovers. Together, we're taking the movement across Europe.</p>
+      <div class="duo-grid">
+        <div class="duo-card">
+          <img src="./nic.jpg" alt="Nic Huzz">
+          <h3>Nic Huzz</h3>
+          <span class="handle">@_huzz</span>
+          <p>Founder of Vibe Rise. Bali's largest silent disco operation. 600+ headset fleet, 200+ events over 3 years, 150+ attendees regularly.</p>
+        </div>
+        <div class="duo-card">
+          <img src="./spiff.jpg" alt="Sydney Spiff">
+          <h3>Sydney "Spiff"</h3>
+          <span class="handle">@spiffnuggs</span>
+          <p>8 years travelling the world. Built an audience of 10K adventure lovers, then created @copilotthetravelbrand, the world's first travel supplement. Based in Bali.</p>
+        </div>
+      </div>
+      <div class="collage">
+        <div class="collage-item">
+          <img src="./collage-spiff-solo.jpg" alt="Nic and Spiff by the tuk tuk">
+        </div>
+        <div class="collage-item">
+          <video src="./nic-spiff-montage.mp4" playsinline autoplay muted loop></video>
+        </div>
+        <div class="collage-item">
+          <img src="./collage-nic-spiff-crowd.jpg" alt="Nic and Spiff with crowd">
+        </div>
+        <div class="collage-item">
+          <video src="./collage-vid5.mp4" playsinline autoplay muted loop></video>
+        </div>
+        <div class="collage-item">
+          <img src="./collage-tuktuk-crew.jpg" alt="Crew with decorated tuk tuk">
+        </div>
+        <div class="collage-item">
+          <video src="./collage-vid6.mp4" playsinline autoplay muted loop></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE TOUR -->
+  <section>
+    <div class="inner fade-up">
+      <span class="label">The Tour</span>
+      <h2>6 cities. 100+ people per city.<br><span class="gradient-text">Europe's most iconic landmarks.</span></h2>
+      <div class="route-grid">
+        <div class="route-card">
+          <span class="route-num">1</span>
+          <div class="route-city">Berlin</div>
+          <div class="route-landmark">Brandenburg Gate</div>
+        </div>
+        <div class="route-card">
+          <span class="route-num">2</span>
+          <div class="route-city">Copenhagen</div>
+          <div class="route-landmark">Nyhavn</div>
+        </div>
+        <div class="route-card">
+          <span class="route-num">3</span>
+          <div class="route-city">Amsterdam</div>
+          <div class="route-landmark">Museumplein</div>
+        </div>
+        <div class="route-card">
+          <span class="route-num">4</span>
+          <div class="route-city">Brussels</div>
+          <div class="route-landmark">Atomium</div>
+        </div>
+        <div class="route-card">
+          <span class="route-num">5</span>
+          <div class="route-city">Paris</div>
+          <div class="route-landmark">Eiffel Tower</div>
+        </div>
+        <div class="route-card">
+          <span class="route-num">6</span>
+          <div class="route-city">Rome</div>
+          <div class="route-landmark">The Colosseum</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE FORMAT -->
+  <section>
+    <div class="inner fade-up">
+      <span class="label">The Format</span>
+      <h2>Walking tour by name.<br><span class="gradient-text">Flash mob by nature.</span></h2>
+      <p style="margin-top: 16px; max-width: 650px;">Here's how it works: Everyone meets at the hostel. Headphones go on. The group walks to the city's most iconic monument, stopping for up to 30 minutes of dancing (or less if we're asked to move on). Then walking back to the hostel where the party continues.</p>
+      <ul class="value-list" style="margin-top: 24px;">
+        <li>
+          <div class="value-icon">🔇</div>
+          <div class="value-text">
+            <h3>Silent = no noise permits</h3>
+            <p>All music is on headphones. Zero external sound. No noise complaints, no noise ordinances, no amplification permits required in any country.</p>
+          </div>
+        </li>
+        <li>
+          <div class="value-icon">🚶</div>
+          <div class="value-text">
+            <h3>Walking = not an assembly</h3>
+            <p>We stop for a dance, then move on. Every tour group in Europe does this. We're not occupying space, we're passing through it.</p>
+          </div>
+        </li>
+        <li>
+          <div class="value-icon">🎟️</div>
+          <div class="value-text">
+            <h3>No tickets sold on-site = no commercial activity</h3>
+            <p>No commercial permits needed. Public gathering laws across Europe are significantly more lenient for non-commercial events.</p>
+          </div>
+        </li>
+      </ul>
+      <p style="margin-top: 24px; font-size: 0.9rem; color: var(--text-muted); font-style: italic;">Zero legal risk for St Christopher's. We handle everything. Your venue is simply where 100 excited people meet before they walk out the door.</p>
+    </div>
+  </section>
+
+  <!-- THE WHY -->
+  <section>
+    <div class="inner fade-up" style="text-align: center;">
+      <span class="label">The Why</span>
+      <h2 style="max-width: 700px; margin: 0 auto; font-size: clamp(1.4rem, 3vw, 2.2rem);">A generation is too anxious to dance sober, too numb to feel, too online to connect.</h2>
+      <h2 style="max-width: 700px; margin: 24px auto 0;"><span class="gradient-text">Vibe Rise creates the safety to do all three.</span></h2>
+      <p style="margin: 32px auto 0; max-width: 580px; font-size: clamp(1.1rem, 2vw, 1.3rem); font-weight: 600; color: var(--text);">Hostels give travellers a place to stay.<br>We give them a reason to remember it.</p>
+      <div style="margin-top: 40px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); max-width: 700px; margin-left: auto; margin-right: auto; aspect-ratio: 16/9;">
+        <video src="./why-video2.mp4" playsinline autoplay muted loop style="width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer;"></video>
+      </div>
+      <p style="margin-top: 12px; font-size: 0.8rem; color: var(--text-muted); font-style: italic;">Click for volume - no background music required</p>
+    </div>
+  </section>
+
+  <!-- THE VIBE WE CREATE -->
+  <section class="video-section">
+    <div class="inner fade-up">
+      <span class="label">The Vibe We Create</span>
+      <h2>200+ events.<br>Bali's largest silent discos.</h2>
+      <p style="margin-top: 12px;">No alcohol. No drugs. Just headphones, music, and feeling euphoric, naturally.</p>
+      <div class="video-grid">
+        <div class="video-grid-item">
+          <video src="./ev-fest.mp4" playsinline autoplay muted loop></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="./ev-pov.mp4" playsinline autoplay muted loop></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="./ev-high.mp4" playsinline autoplay muted loop></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="./collage-vibe-tribe.mp4" playsinline autoplay muted loop></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="./ev-boat.mp4" playsinline autoplay muted loop></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="./ev-promo1.mp4" playsinline autoplay muted loop></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="./collage-tables.mp4" playsinline autoplay muted loop></video>
+        </div>
+        <div class="video-grid-item">
+          <video src="./ev-fest-mov.mp4" playsinline autoplay muted loop></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT PLAN -->
+  <section>
+    <div class="inner fade-up">
+      <span class="label">The Content</span>
+      <h2>Every city produces<br><span class="gradient-text">professional content.</span></h2>
+
+      <div class="team-grid" style="margin-top: 32px;">
+        <div class="team-card">
+          <img src="./team-videographer.jpg" alt="Videographer" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); margin-bottom: 12px;">
+          <div class="role">Production</div>
+          <h3>Travelling Videographer</h3>
+          <p>Professional filming at every stop</p>
+        </div>
+        <div class="team-card">
+          <img src="./team-agency.jpg" alt="Kunj - Monkgrid" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); margin-bottom: 12px;">
+          <div class="role">Post-production</div>
+          <h3>Monkgrid</h3>
+          <p>350+ films delivered. 8 years behind the lens. Cinematic editing and visual storytelling.</p>
+        </div>
+      </div>
+
+      <!-- Row 1: The meetup -->
+      <div class="content-row" style="margin-top: 32px;">
+        <div class="content-media">
+          <video src="./example-roadtrip.mp4" playsinline autoplay muted loop></video>
+        </div>
+        <div class="content-info">
+          <div class="num">6</div>
+          <h3>Hostel meetup content</h3>
+          <p>The event starts at your venue. 100 people gathering in the common room, getting headphones, the energy building. Content filmed at St Christopher's before every walk.</p>
+          <p style="margin-top: 8px; font-size: 0.85rem; font-style: italic;">Example video of Monkgrid's work quality</p>
+        </div>
+      </div>
+
+      <!-- Row 2: Behind the scenes (reversed) -->
+      <div class="content-row reverse">
+        <div class="content-media">
+          <video src="./example-bts.mp4" playsinline autoplay muted loop></video>
+        </div>
+        <div class="content-info">
+          <div class="num">Daily</div>
+          <h3>Behind-the-scenes Stories</h3>
+          <p>"Where we stayed" features, common room hangs, after-party moments. Daily Stories showing life on tour with St Christopher's as home base.</p>
+        </div>
+      </div>
+
+      <!-- Row 3: Event highlight reels -->
+      <div class="content-row">
+        <div class="content-media">
+          <video src="./ev-boat.mp4" playsinline autoplay muted loop></video>
+        </div>
+        <div class="content-info">
+          <div class="num">12-24</div>
+          <h3>Viral event content</h3>
+          <p>Cinematic edits of each silent disco event. St Christopher's tagged and credited as the starting point in every post.</p>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+
+  <!-- WHAT YOUR HOSTEL GETS -->
+  <section>
+    <div class="inner fade-up">
+      <span class="label">The Partnership</span>
+      <h2>What <span class="gradient-text">St Christopher's</span> gets.</h2>
+      <p style="margin-top: 16px; text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">100 young travellers walk into your venue, buzzing with energy, before and after every event. Here's what that looks like.</p>
+      <ul class="value-list">
+        <li>
+          <div class="value-icon">🏠</div>
+          <div class="value-text">
+            <h3>100+ people meet at St Christopher's</h3>
+            <p>Every event starts and ends at your venue. The group gathers in your common room, gets headphones, walks out to the monuments, and comes back to your bar afterwards. That's 100+ people through your doors in a single evening.</p>
+          </div>
+        </li>
+        <li>
+          <div class="value-icon">🍻</div>
+          <div class="value-text">
+            <h3>Bar revenue from the after-party</h3>
+            <p>The walking tour ends back at St Christopher's. 100 people just danced at a monument and they're on a high. They're buying drinks, they're staying late, they're telling every person in the common room about it.</p>
+          </div>
+        </li>
+        <li>
+          <div class="value-icon">🎬</div>
+          <div class="value-text">
+            <h3>Professional content featuring St Christopher's</h3>
+            <p>Behind-the-scenes Stories filmed at your venue. "Where we stayed" callouts in vlogs. St Christopher's tagged in every post.</p>
+          </div>
+        </li>
+        <li>
+          <div class="value-icon">🔁</div>
+          <div class="value-text">
+            <h3>Become "the hostel where Vibe Rise happens"</h3>
+            <p>If it goes well, we come back. St Christopher's becomes the home base for a recurring experience that guests specifically book for.</p>
+          </div>
+        </li>
+        <li>
+          <div class="value-icon">🎟️</div>
+          <div class="value-text">
+            <h3>Revenue Opportunity*</h3>
+            <p>Want to sell tickets to your guests and the public? Go for it. You handle ticketing, you keep the money. We bring the headphones, the production, and the energy. <span style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-top: 8px;">*Optional</span></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- THE ASK -->
+  <section class="short-section">
+    <div class="inner fade-up">
+      <span class="label">The Ask</span>
+      <div class="ask-box">
+        <h2>One private room. 5-7 nights.</h2>
+        <p>Enough time to arrive, spread the word, and host the event.<br>We bring 100+ people to your door. That's the trade.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="contact-section">
+    <div class="inner fade-up" style="text-align: center;">
+      <span class="label">Connect</span>
+      <img src="./nic-spiff-contact.jpg" alt="Nic and Spiff" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border); margin-bottom: 24px;">
+      <h2>Happy to answer any questions and explore ways to make this a <span class="gradient-text">win-win</span> for both of us.</h2>
+      <div class="contact-links" style="margin-top: 32px;">
+        <a href="https://wa.me/61423220241" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; font-size: 1.1rem;">WhatsApp: +61 423 220 241</a>
+        <a href="mailto:Huzz@nichuzz.com" style="font-size: 1.05rem;">Huzz@nichuzz.com</a>
+        <span class="muted">Nic Huzz — @_huzz</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Click to toggle audio — hero + vibe we create videos only
+    document.querySelectorAll('.hero-video video, .video-grid-item video, .content-media video, [src$="why-video2.mp4"]').forEach(video => {
+      video.style.cursor = 'pointer';
+      video.addEventListener('click', () => {
+        if (!video.muted) {
+          video.muted = true;
+          return;
+        }
+        // Mute all others
+        document.querySelectorAll('.hero-video video, .video-grid-item video').forEach(v => {
+          v.muted = true;
+        });
+        video.muted = false;
+      });
+    });
+  </script>
+
+</body>
+</html>
